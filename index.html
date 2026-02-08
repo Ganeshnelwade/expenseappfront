@@ -10,31 +10,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.29/jspdf.plugin.autotable.min.js"></script>
 
 <style>
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    padding: 20px;
-}
-.container {
-    max-width: 900px;
-    margin: auto;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
+body { font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; }
+.container { max-width: 900px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
 h1 { text-align: center; }
-input, button {
-    padding: 10px;
-    margin: 5px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-}
-button {
-    background-color: #333;
-    color: white;
-    cursor: pointer;
-}
+input, button { padding: 10px; margin: 5px; border-radius: 4px; border: 1px solid #ccc; }
+button { background-color: #333; color: white; cursor: pointer; }
 button:hover { background-color: #555; }
 table { width: 100%; border-collapse: collapse; margin-top: 20px; }
 th, td { border: 1px solid #ccc; padding: 10px; text-align: center; }
@@ -74,7 +54,8 @@ th { background: #333; color: white; }
 </div>
 
 <script>
-const API = "https://expenseapp-sm88.onrender.com"; // Change to your Render URL after deployment
+// ======= CHANGE THIS TO YOUR RENDER BACKEND URL =======
+const API = "https://expenseapp.onrender.com/expenses"; 
 let expenses = [];
 
 // Fetch all expenses from backend
@@ -146,7 +127,6 @@ function generatePDF() {
 
     const totalAmount = expenses.reduce((sum, e) => sum + e.amount, 0);
 
-    // AutoTable
     doc.autoTable({
         startY: 25,
         head: [["Date","Category","Amount","Note"]],
@@ -164,3 +144,4 @@ loadExpenses();
 
 </body>
 </html>
+
