@@ -54,18 +54,14 @@ th { background: #333; color: white; }
 </div>
 
 <script>
-// ======= CHANGE THIS TO YOUR RENDER BACKEND URL =======
-const API = "https://expenseapp-sm88.onrender.com"; 
+const API = "https://expenseapp-sm88.onrender.com"; // Example: https://expenseapp.onrender.com/expenses
 let expenses = [];
 
 // Fetch all expenses from backend
 function loadExpenses() {
     fetch(API)
         .then(res => res.json())
-        .then(data => {
-            expenses = data;
-            renderTable();
-        })
+        .then(data => { expenses = data; renderTable(); })
         .catch(err => console.error(err));
 }
 
@@ -76,10 +72,7 @@ function addExpense() {
     const amount = Number(document.getElementById("amount").value);
     const note = document.getElementById("note").value;
 
-    if (!date || !category || !amount) {
-        alert("Date, Category, and Amount are required!");
-        return;
-    }
+    if (!date || !category || !amount) { alert("Date, Category, and Amount are required!"); return; }
 
     fetch(API, {
         method: "POST",
@@ -144,5 +137,3 @@ loadExpenses();
 
 </body>
 </html>
-
-
